@@ -4,6 +4,7 @@ import HomeLayouts from "../../layouts/HomeLayouts";
 import Masonry from "react-masonry-css";
 import { FaQuoteLeft, FaKey, FaCar, FaExchangeAlt, FaRegCheckCircle, FaChevronLeft, FaChevronRight, FaStar, FaChevronDown, FaChevronUp } from "react-icons/fa";
 import Slider from "react-slick";
+import AnimatedSection from "../../components/AnimatedSection";
 
 export default function Home() {
   const [data, setData] = useState({ gallery: [], mobil: [], testimoni: [], faq: [], });
@@ -88,7 +89,7 @@ export default function Home() {
 
   return (
     <HomeLayouts>
-      <section className="bg-gradient-to-b from-blue-50 to-white py-16 px-4">
+      <AnimatedSection className="bg-gradient-to-b from-blue-50 to-white py-16 px-4">
         <h2 className="text-2xl font-bold mb-6 text-center">Kenapa Memilih Kami?</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
           <div className="bg-white rounded shadow p-6 text-center">
@@ -115,9 +116,9 @@ export default function Home() {
             <p className="text-sm text-gray-600">Proses penyewaan yang mudah</p>
           </div>
         </div>
-      </section>
+      </AnimatedSection>
 
-      <section className="bg-gradient-to-b from-blue-50 to-white py-16 px-4">
+      <AnimatedSection className="bg-gradient-to-b from-blue-50 to-white py-16 px-4">
         <div className="text-center mb-10">
           <h2 className="text-4xl font-bold text-gray-800 mb-3">Galeri Kendaraan Kami</h2>
           <p className="text-gray-600 max-w-2xl mx-auto text-lg">
@@ -186,11 +187,11 @@ export default function Home() {
             </div>
           </div>
         )}
-      </section>
+      </AnimatedSection>
 
-      <section className="bg-gradient-to-b from-blue-50 to-white py-16 px-4">
+      <AnimatedSection className="bg-gradient-to-b from-blue-50 to-white py-16 px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-blue-700">Keunggulan Kami</h2>
+          <h2 className="text-3xl font-bold text-blue-700">Harga Menyesuaikan kebutuhan , yang pasti bersifat Negotiable</h2>
           <p className="text-lg text-gray-600 mt-4">
             Harga Menyesuaikan kebutuhan, yang pasti bersifat Negotiable. Kami menyediakan berbagai unit armada terbaru. Bisa menggunakan Driver maupun lepas Kunci.
           </p>
@@ -226,9 +227,9 @@ export default function Home() {
             <p className="text-gray-600 mt-2">Harga transparan dan tidak ada biaya tambahan yang mengejutkan. Semua sudah jelas sejak awal.</p>
           </div>
         </div>
-      </section>
+      </AnimatedSection>
 
-      <section className="bg-gradient-to-b from-blue-50 to-white py-16 px-4">
+      <AnimatedSection className="bg-gradient-to-b from-blue-50 to-white py-16 px-4">
         <div className="max-w-6xl mx-auto text-center">
           <h2 className="text-2xl font-bold mb-4 text-blue-700">
             Nikmati Kualitas Berkendara dengan Kendaraan Terbaru Kami
@@ -287,9 +288,9 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </AnimatedSection>
 
-      <section className="bg-gradient-to-b from-blue-50 to-white py-20 px-4">
+      <AnimatedSection className="bg-gradient-to-b from-blue-50 to-white py-16 px-4">
         <div className="max-w-5xl mx-auto text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-extrabold text-blue-800 mb-4">Apa Kata Pelanggan Kami?</h2>
 
@@ -356,9 +357,9 @@ export default function Home() {
             </Slider>
           </div>
         )}
-      </section>
+      </AnimatedSection>
 
-      <section className="bg-gradient-to-b from-blue-50 to-white py-16 px-4">
+      <AnimatedSection className="bg-gradient-to-b from-blue-50 to-white py-16 px-4">
         <h2 className="text-3xl font-extrabold text-center mb-6 text-blue-700">Pertanyaan yang Sering Diajukan</h2>
 
         <div className="space-y-6">
@@ -382,7 +383,7 @@ export default function Home() {
             </div>
           ))}
         </div>
-      </section>
+      </AnimatedSection>
     </HomeLayouts>
   );
 }
