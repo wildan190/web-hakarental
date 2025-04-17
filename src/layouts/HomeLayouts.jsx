@@ -81,7 +81,8 @@ export default function HomeLayouts({ children }) {
 
       {/* Conditional Hero */}
       {window.location.pathname === "/" && <Hero />}
-      <main className="flex-grow container mx-auto px-6 py-10 mt-10">
+      {/* <main className="flex-grow container mx-auto px-6 py-10 mt-10"> */}
+      <main>
         {children}
       </main>
 

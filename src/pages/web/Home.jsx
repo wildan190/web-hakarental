@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import api from "../../api";
 import HomeLayouts from "../../layouts/HomeLayouts";
 import Masonry from "react-masonry-css";
-import { FaKey, FaCar, FaExchangeAlt, FaRegCheckCircle, FaChevronLeft, FaChevronRight, FaStar, FaChevronDown, FaChevronUp } from "react-icons/fa";
+import { FaQuoteLeft, FaKey, FaCar, FaExchangeAlt, FaRegCheckCircle, FaChevronLeft, FaChevronRight, FaStar, FaChevronDown, FaChevronUp } from "react-icons/fa";
 import Slider from "react-slick";
 
 export default function Home() {
@@ -88,7 +88,7 @@ export default function Home() {
 
   return (
     <HomeLayouts>
-      <section className="mb-10">
+      <section className="bg-gradient-to-b from-blue-50 to-white py-16 px-4">
         <h2 className="text-2xl font-bold mb-6 text-center">Kenapa Memilih Kami?</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
           <div className="bg-white rounded shadow p-6 text-center">
@@ -117,7 +117,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mb-10 bg-gradient-to-b from-gray-100 to-white py-14 px-4">
+      <section className="bg-gradient-to-b from-blue-50 to-white py-16 px-4">
         <div className="text-center mb-10">
           <h2 className="text-4xl font-bold text-gray-800 mb-3">Galeri Kendaraan Kami</h2>
           <p className="text-gray-600 max-w-2xl mx-auto text-lg">
@@ -188,7 +188,7 @@ export default function Home() {
         )}
       </section>
 
-      <section className="bg-white py-16 px-6">
+      <section className="bg-gradient-to-b from-blue-50 to-white py-16 px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-blue-700">Keunggulan Kami</h2>
           <p className="text-lg text-gray-600 mt-4">
@@ -228,7 +228,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mb-16 px-4 md:px-0">
+      <section className="bg-gradient-to-b from-blue-50 to-white py-16 px-4">
         <div className="max-w-6xl mx-auto text-center">
           <h2 className="text-2xl font-bold mb-4 text-blue-700">
             Nikmati Kualitas Berkendara dengan Kendaraan Terbaru Kami
@@ -289,65 +289,66 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-gray-50 py-16 px-4">
-        <div className="max-w-5xl mx-auto text-center mb-10">
-          <h2 className="text-2xl md:text-3xl font-bold text-blue-700 mb-2">Apa Kata Pelanggan Kami?</h2>
+      <section className="bg-gradient-to-b from-blue-50 to-white py-20 px-4">
+        <div className="max-w-5xl mx-auto text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-blue-800 mb-4">Apa Kata Pelanggan Kami?</h2>
 
-          <div className="flex justify-center mb-2">
+          <div className="flex justify-center mb-3">
             {[...Array(5)].map((_, i) => (
               <FaStar key={i} className="text-yellow-400 text-xl" />
             ))}
           </div>
 
-          <p className="text-lg font-semibold text-gray-700 mb-1">4.9/5 Average Rate</p>
-          <p className="text-sm text-gray-500 max-w-md mx-auto">
-            Dengarkan pelanggan kami yang puas tentang pengalaman mereka bersama kami
+          <p className="text-xl font-semibold text-gray-800 mb-2">4.9/5 Rata-Rata Penilaian</p>
+          <p className="text-sm text-gray-600 max-w-md mx-auto">
+            Dengarkan kisah nyata dari pelanggan kami tentang pengalaman luar biasa mereka.
           </p>
         </div>
 
         {data.testimoni.length === 0 ? (
           <p className="text-center text-gray-500">Belum ada testimoni.</p>
         ) : (
-          <div className="max-w-6xl mx-auto px-2">
+          <div className="max-w-6xl mx-auto">
             <Slider
-              centerMode={true} // Center the cards
-              infinite={true}
+              centerMode
+              infinite
               speed={500}
-              slidesToShow={3} // Show 3 cards at once
-              slidesToScroll={1} // Scroll one card at a time
-              autoplay={true}
+              slidesToShow={3}
+              slidesToScroll={1}
+              autoplay
               autoplaySpeed={5000}
-              focusOnSelect={true}
-              nextArrow={<FaChevronRight className="absolute top-1/2 right-5 transform -translate-y-1/2 text-3xl text-blue-600 cursor-pointer" />}
-              prevArrow={<FaChevronLeft className="absolute top-1/2 left-5 transform -translate-y-1/2 text-3xl text-blue-600 cursor-pointer" />}
+              focusOnSelect
               responsive={[
                 {
                   breakpoint: 1024,
-                  settings: {
-                    slidesToShow: 2, // Display 2 cards on medium screens
-                  },
+                  settings: { slidesToShow: 2 },
                 },
                 {
                   breakpoint: 640,
-                  settings: {
-                    slidesToShow: 1, // Display 1 card on mobile screens
-                  },
+                  settings: { slidesToShow: 1 },
                 },
               ]}
+              nextArrow={
+                <FaChevronRight className="absolute top-1/2 right-0 transform -translate-y-1/2 text-3xl text-blue-600 cursor-pointer z-10" />
+              }
+              prevArrow={
+                <FaChevronLeft className="absolute top-1/2 left-0 transform -translate-y-1/2 text-3xl text-blue-600 cursor-pointer z-10" />
+              }
             >
               {data.testimoni.map((t, index) => (
                 <div key={t.id} className="px-4">
                   <div
-                    className={`bg-white rounded-lg shadow-md border border-blue-100 p-6 h-full text-center transition-transform transform ${index === 1 ? "scale-105" : "" // Zoom effect on the center card
+                    className={`bg-white rounded-2xl shadow-lg border border-blue-100 p-6 h-full text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-xl ${index === 1 ? "scale-105 border-blue-200" : ""
                       }`}
                   >
+                    <FaQuoteLeft className="text-3xl text-blue-200 mb-4 mx-auto" />
                     <p className="text-gray-700 italic text-base mb-4">“{t.feedback}”</p>
-                    <h4 className="font-semibold text-blue-600">{t.name}</h4>
+                    <h4 className="font-bold text-blue-700 text-lg">{t.name}</h4>
                     <div className="flex justify-center items-center mt-2 text-yellow-400">
                       {[...Array(t.rate)].map((_, i) => (
                         <FaStar key={i} />
                       ))}
-                      <span className="ml-2 text-sm text-gray-600">{t.rate}/5</span>
+                      <span className="ml-2 text-sm text-gray-500">{t.rate}/5</span>
                     </div>
                   </div>
                 </div>
@@ -357,31 +358,31 @@ export default function Home() {
         )}
       </section>
 
-      <section className="my-12 max-w-4xl mx-auto px-4">
-      <h2 className="text-3xl font-extrabold text-center mb-6 text-blue-700">Pertanyaan yang Sering Diajukan</h2>
+      <section className="bg-gradient-to-b from-blue-50 to-white py-16 px-4">
+        <h2 className="text-3xl font-extrabold text-center mb-6 text-blue-700">Pertanyaan yang Sering Diajukan</h2>
 
-      <div className="space-y-6">
-        {data.faq.map((item, index) => (
-          <div
-            key={item.id}
-            className="bg-white p-5 rounded-lg shadow-md border border-gray-200 hover:shadow-xl transition-all"
-          >
+        <div className="space-y-6">
+          {data.faq.map((item, index) => (
             <div
-              className="flex items-center justify-between cursor-pointer"
-              onClick={() => toggleCollapse(index)}
+              key={item.id}
+              className="bg-white p-5 rounded-lg shadow-md border border-gray-200 hover:shadow-xl transition-all"
             >
-              <h3 className="font-semibold text-xl text-blue-600">{item.title}</h3>
-              <span className="text-blue-600 text-lg">
-                {openIndex === index ? "−" : "+"}
-              </span>
+              <div
+                className="flex items-center justify-between cursor-pointer"
+                onClick={() => toggleCollapse(index)}
+              >
+                <h3 className="font-semibold text-xl text-blue-600">{item.title}</h3>
+                <span className="text-blue-600 text-lg">
+                  {openIndex === index ? "−" : "+"}
+                </span>
+              </div>
+              {openIndex === index && (
+                <p className="text-gray-700 leading-relaxed mt-4">{item.description}</p>
+              )}
             </div>
-            {openIndex === index && (
-              <p className="text-gray-700 leading-relaxed mt-4">{item.description}</p>
-            )}
-          </div>
-        ))}
-      </div>
-    </section>
+          ))}
+        </div>
+      </section>
     </HomeLayouts>
   );
 }
