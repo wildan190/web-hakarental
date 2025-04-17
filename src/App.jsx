@@ -15,6 +15,7 @@ import WebBlogDetail from "./pages/web/WebBlogDetail";
 import WebMobil from "./pages/web/WebMobil";
 import WebKontak from "./pages/web/WebKontak";
 import WebTestimoni from "./pages/web/WebTestimoni";
+import WebFaq from "./pages/web/WebFaq";
 
 export default function App() {
   return (
@@ -27,6 +28,7 @@ export default function App() {
         <Route path="/mobil" element={<WebMobil />} />
         <Route path="/kontak" element={<WebKontak />} />
         <Route path="/testimoni" element={<WebTestimoni />} />
+        <Route path="/faq" element={<WebFaq />} />
 
         {/* Auth routes */}
         <Route path="/login" element={<Login />} />

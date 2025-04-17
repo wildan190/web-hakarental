@@ -45,6 +45,7 @@ export default function HomeLayouts({ children }) {
           <Link to="/blog" className="hover:text-blue-600">Blog</Link>
           <Link to="/testimoni" className="hover:text-blue-600">Testimoni</Link>
           <Link to="/kontak" className="hover:text-blue-600">Kontak</Link>
+          <Link to="/faq" className="hover:text-blue-600">FAQ</Link>
         </nav>
 
         <button
@@ -90,7 +91,7 @@ export default function HomeLayouts({ children }) {
       <footer className="bg-blue-900 text-white pt-10 pb-6 mt-16">
         <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
-            <h2 className="text-2xl font-bold mb-3">Rental Mobil</h2>
+            <h2 className="text-2xl font-bold mb-3">Hakarentcar</h2>
             <p className="text-sm text-gray-300">
               Solusi transportasi terbaik untuk perjalanan Anda. Nikmati kenyamanan dan keamanan bersama kami.
             </p>
@@ -104,6 +105,7 @@ export default function HomeLayouts({ children }) {
               <li><Link to="/blog" className="hover:underline">Blog</Link></li>
               <li><Link to="/testimoni" className="hover:underline">Testimoni</Link></li>
               <li><Link to="/kontak" className="hover:underline">Kontak</Link></li>
+              <li><Link to="/faq" className="hover:underline">FAQ</Link></li>
             </ul>
           </div>
 
