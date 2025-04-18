@@ -1,4 +1,5 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ErrorBoundary from "./components/ErrorBoundary"; // Impor ErrorBoundary
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
@@ -38,57 +39,71 @@ export default function App() {
         <Route
           path="/admin/dashboard"
           element={
-            <ProtectedRoute>
-              <Dashboard />
-            </ProtectedRoute>
+            <ErrorBoundary> {/* Membungkus dengan ErrorBoundary */}
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            </ErrorBoundary>
           }
         />
         <Route
           path="/admin/blogs"
           element={
-            <ProtectedRoute>
-              <Blogs />
-            </ProtectedRoute>
+            <ErrorBoundary> {/* Membungkus dengan ErrorBoundary */}
+              <ProtectedRoute>
+                <Blogs />
+              </ProtectedRoute>
+            </ErrorBoundary>
           }
         />
         <Route
           path="/admin/mobils"
           element={
-            <ProtectedRoute>
-              <Mobils />
-            </ProtectedRoute>
+            <ErrorBoundary> {/* Membungkus dengan ErrorBoundary */}
+              <ProtectedRoute>
+                <Mobils />
+              </ProtectedRoute>
+            </ErrorBoundary>
           }
         />
         <Route
           path="/admin/galleries"
           element={
-            <ProtectedRoute>
-              <Galleries />
-            </ProtectedRoute>
+            <ErrorBoundary> {/* Membungkus dengan ErrorBoundary */}
+              <ProtectedRoute>
+                <Galleries />
+              </ProtectedRoute>
+            </ErrorBoundary>
           }
         />
         <Route
           path="/admin/metadata"
           element={
-            <ProtectedRoute>
-              <Metadata />
-            </ProtectedRoute>
+            <ErrorBoundary> {/* Membungkus dengan ErrorBoundary */}
+              <ProtectedRoute>
+                <Metadata />
+              </ProtectedRoute>
+            </ErrorBoundary>
           }
         />
         <Route
           path="/admin/testimoni"
           element={
-            <ProtectedRoute>
-              <Testimoni />
-            </ProtectedRoute>
+            <ErrorBoundary> {/* Membungkus dengan ErrorBoundary */}
+              <ProtectedRoute>
+                <Testimoni />
+              </ProtectedRoute>
+            </ErrorBoundary>
           }
         />
         <Route
           path="/admin/faqs"
           element={
-            <ProtectedRoute>
-              <Faqs />
-            </ProtectedRoute>
+            <ErrorBoundary> {/* Membungkus dengan ErrorBoundary */}
+              <ProtectedRoute>
+                <Faqs />
+              </ProtectedRoute>
+            </ErrorBoundary>
           }
         />
       </Routes>
