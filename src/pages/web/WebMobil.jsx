@@ -127,6 +127,7 @@ export default function WebMobil() {
                     src={imgUrl(car.image)}
                     alt={car.name}
                     className="w-full h-auto object-contain rounded"
+                    loading="lazy"
                   />
                 </div>
 

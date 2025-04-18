@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 export default function Hero() {
   return (
     <section
-      className="text-white min-h-screen flex items-center bg-cover bg-center relative px-4 md:px-10 py-20"
+      className="text-white min-h-screen flex items-center bg-cover bg-center relative px-4 md:px-10 py-20" loading="lazy"
       style={{ backgroundImage: "url('/assets/img/hero.jpg')" }}
     >
       <div className="absolute inset-0 bg-black bg-opacity-40"></div>

@@ -56,6 +56,7 @@ export default function WebBlog() {
                     src={imgUrl(blog.image)}
                     alt={blog.title}
                     className="w-full h-full object-cover brightness-75"
+                    loading="lazy"
                   />
                   <div className="absolute inset-0 bg-black bg-opacity-50 z-0"></div>
                   <div className="absolute inset-0 flex flex-col justify-end md:justify-center p-6 md:p-12 text-white z-10">
@@ -99,6 +100,7 @@ export default function WebBlog() {
                     src={imgUrl(blog.image)}
                     alt={blog.title}
                     className="w-full h-52 object-cover rounded-t-xl"
+                    loading="lazy"
                   />
                 )}
                 <div className="p-5">

@@ -2,7 +2,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://frankly-perfect-swan.ngrok-free.app/api",
+  baseURL: "https://fast-llama-evenly.ngrok-free.app/api",
 });
 
 export default api;

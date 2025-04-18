@@ -142,6 +142,7 @@ export default function Home() {
                   src={imgUrl(item.image)}
                   alt={item.title}
                   className="w-full h-60 object-cover transition-transform duration-300 group-hover:scale-105"
+                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
                   <p className="text-white text-base font-semibold text-center px-4">{item.title}</p>
@@ -252,6 +253,7 @@ export default function Home() {
                     src={imgUrl(car.image)}
                     alt={car.name}
                     className="w-full h-auto object-contain rounded"
+                    loading="lazy"
                   />
                 </div>
 
