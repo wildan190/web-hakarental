@@ -16,7 +16,7 @@ export default function Blogs() {
   const quillRef = useRef(null);
   const editorInstance = useRef(null);
 
-  const IMAGE_BASE_URL = "https://frankly-perfect-swan.ngrok-free.app/storage/";
+  const IMAGE_BASE_URL = "https://fast-llama-evenly.ngrok-free.app/storage/";
 
   const fetchBlogs = async () => {
     try {

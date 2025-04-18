@@ -18,7 +18,7 @@ export default function MainLayout({ children }) {
 
   const handleLogout = async () => {
     try {
-      await fetch(" https://frankly-perfect-swan.ngrok-free.app/api/auth/logout", {
+      await fetch(" https://fast-llama-evenly.ngrok-free.app/api/auth/logout", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("access_token")}`,
