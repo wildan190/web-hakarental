@@ -11,6 +11,8 @@ export default function WebMobil() {
     merk: "",
     transmission: "",
   });
+  const [currentPage, setCurrentPage] = useState(1);
+  const mobilsPerPage = 6;
 
   const fetchMobils = async () => {
     try {
@@ -22,6 +24,7 @@ export default function WebMobil() {
 
       const res = await api.get(`/web/mobil?${query.toString()}`);
       setMobils(res.data);
+      setCurrentPage(1); // Reset ke halaman 1 saat filter berubah
     } catch (err) {
       console.error("Gagal mengambil data mobil:", err);
     }
@@ -37,17 +40,41 @@ export default function WebMobil() {
     setFilters({ ...filters, [e.target.name]: e.target.value });
   };
 
-  const formatRupiah = (value) => {
-    return "Rp " + Number(value).toLocaleString("id-ID");
+  const formatRupiah = (value) =>
+    "Rp " + Number(value).toLocaleString("id-ID");
+
+  const indexOfLast = currentPage * mobilsPerPage;
+  const indexOfFirst = indexOfLast - mobilsPerPage;
+  const currentMobils = mobils.slice(indexOfFirst, indexOfLast);
+  const totalPages = Math.ceil(mobils.length / mobilsPerPage);
+
+  const paginate = (page) => {
+    setCurrentPage(page);
   };
 
   return (
     <HomeLayouts>
-      <div className="max-w-6xl mx-auto px-4 py-10 text-gray-800">
-        <h2 className="text-2xl font-bold mb-6">Daftar Mobil Tersedia</h2>
+      {/* HERO SECTION */}
+      <section className="relative h-64 md:h-80 flex items-center justify-center bg-black text-white bg-cover bg-center" style={{
+        backgroundImage: `url('/mobil-hero.jpg')`, // Ganti sesuai aset
+      }}>
+        <div className="absolute inset-0 bg-black bg-opacity-60" />
+        <div className="relative z-10 px-6 text-center">
+          <h1 className="text-3xl md:text-5xl font-bold leading-tight mb-4">
+            Temukan Mobil Impianmu 🚗
+          </h1>
+          <p className="text-gray-200 max-w-xl mx-auto">
+            Sewa mobil berkualitas dengan harga terbaik hanya di Haka Rental.
+          </p>
+        </div>
+      </section>
+
+      {/* FILTER & LIST */}
+      <section className="max-w-6xl mx-auto px-4 py-14 text-gray-800">
+        <h2 className="text-2xl font-bold mb-6 text-center">Daftar Mobil Tersedia</h2>
 
         {/* Filter */}
-        <div className="grid md:grid-cols-4 gap-4 mb-8">
+        <div className="grid md:grid-cols-4 gap-4 mb-10">
           <input
             type="text"
             name="search"
@@ -84,12 +111,12 @@ export default function WebMobil() {
           </select>
         </div>
 
-        {/* List */}
-        {mobils.length === 0 ? (
-          <p className="text-gray-500">Tidak ada mobil yang ditemukan.</p>
+        {/* Daftar Mobil */}
+        {currentMobils.length === 0 ? (
+          <p className="text-gray-500 text-center">Tidak ada mobil yang ditemukan.</p>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {mobils.map((car) => (
+            {currentMobils.map((car) => (
               <div
                 key={car.id}
                 className="flex flex-col md:flex-row bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition p-4"
@@ -103,19 +130,19 @@ export default function WebMobil() {
                   />
                 </div>
 
-                {/* Konten */}
+                {/* Info Mobil */}
                 <div className="flex flex-col flex-1 text-left items-start">
                   <h3 className="text-xl font-bold text-gray-900">{car.name}</h3>
                   <p className="text-base font-semibold text-gray-500">
                     {car.merk} - {car.type}
                   </p>
-                  <p className="text-lg font-bold text-blue-400 mt-2">
+                  <p className="text-lg font-bold text-blue-500 mt-2">
                     {formatRupiah(car.harga)}
                   </p>
-                  <p className="text-base font-semibold text-gray-800 mt-1">
+                  <p className="text-base text-gray-700 mt-1">
                     {car.description}
                   </p>
-                  <div className="flex flex-wrap justify-start gap-4 text-base text-gray-500 mt-2">
+                  <div className="flex flex-wrap gap-4 text-base text-gray-500 mt-2">
                     <span className="flex items-center gap-1">
                       <FaCar /> {car.seat} Kursi
                     </span>
@@ -125,7 +152,7 @@ export default function WebMobil() {
                   </div>
                   <div className="mt-4 w-full md:w-auto">
                     <a
-                      href={`https://wa.me/62822535456?text=Halo%20saya%20ingin%20sewa%20mobil%20${encodeURIComponent(car.name)}`}
+                      href={`https://wa.me/62822535456?text=Halo%20saya%20rencana%20untuk%20menyewa%20mobil%20${encodeURIComponent(car.name)}.%20Apakah%20mobil%20ini%20tersedia%3F`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-block bg-green-500 text-white font-medium px-4 py-2 rounded hover:bg-green-600 transition text-base w-full md:w-auto"
@@ -138,7 +165,47 @@ export default function WebMobil() {
             ))}
           </div>
         )}
-      </div>
+
+        {/* PAGINATION */}
+        {totalPages > 1 && (
+          <div className="flex justify-center mt-12 space-x-2">
+            <button
+              onClick={() => paginate(currentPage - 1)}
+              disabled={currentPage === 1}
+              className={`px-4 py-2 text-sm rounded ${currentPage === 1
+                  ? "bg-gray-200 text-gray-500"
+                  : "bg-blue-600 text-white hover:bg-blue-700"
+                }`}
+            >
+              Sebelumnya
+            </button>
+
+            {[...Array(totalPages)].map((_, i) => (
+              <button
+                key={i}
+                onClick={() => paginate(i + 1)}
+                className={`px-3 py-2 text-sm font-semibold rounded ${currentPage === i + 1
+                    ? "bg-blue-700 text-white"
+                    : "bg-gray-100 text-gray-700 hover:bg-gray-300"
+                  }`}
+              >
+                {i + 1}
+              </button>
+            ))}
+
+            <button
+              onClick={() => paginate(currentPage + 1)}
+              disabled={currentPage === totalPages}
+              className={`px-4 py-2 text-sm rounded ${currentPage === totalPages
+                  ? "bg-gray-200 text-gray-500"
+                  : "bg-blue-600 text-white hover:bg-blue-700"
+                }`}
+            >
+              Berikutnya
+            </button>
+          </div>
+        )}
+      </section>
     </HomeLayouts>
   );
 }

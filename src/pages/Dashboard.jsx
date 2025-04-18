@@ -8,7 +8,6 @@ export default function Dashboard() {
   const [data, setData] = useState(null);
   const navigate = useNavigate();
 
-  // Ganti sesuai URL storage Laravel-mu
   const IMAGE_BASE_URL = "https://frankly-perfect-swan.ngrok-free.app/storage/";
 
   const fetchDashboard = async () => {
@@ -29,43 +28,53 @@ export default function Dashboard() {
 
   return (
     <MainLayout>
-      <div className="mt-8">
-        <h2 className="text-3xl font-bold text-gray-800 mb-6">Dashboard</h2>
-
+      <div className="mt-10 px-4">
+        <h2 className="text-3xl font-bold text-gray-800 mb-4">Selamat Datang 👋</h2>
         {data ? (
-          <div className="mt-8">
-            <p className="text-xl text-gray-800">{data.message}</p>
+          <>
+            <p className="text-lg text-gray-600">{data.message}</p>
 
-            <h3 className="mt-6 text-2xl font-semibold text-gray-800">Artikel Saya</h3>
-            <ul className="space-y-4 mt-4">
-              {data.blogs.map((blog) => (
-                <li
-                  key={blog.id}
-                  className="bg-white p-4 rounded shadow-md border border-gray-200"
-                >
-                  <h4 className="text-xl font-semibold text-gray-900 mb-2">{blog.title}</h4>
+            <h3 className="mt-10 text-2xl font-semibold text-gray-800">Artikel Saya</h3>
 
-                  {blog.image && (
-                    <img
-                      src={`${IMAGE_BASE_URL}${blog.image}`}
-                      alt={blog.title}
-                      className="mb-4 w-full max-h-64 object-cover rounded"
-                    />
-                  )}
-
+            {data.blogs.length === 0 ? (
+              <p className="text-gray-500 mt-4">Belum ada artikel ditulis.</p>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+                {data.blogs.map((blog) => (
                   <div
-                    className="text-gray-700 mb-4"
-                    dangerouslySetInnerHTML={{ __html: blog.content }}
-                  />
+                    key={blog.id}
+                    className="bg-white rounded-lg shadow hover:shadow-lg transition duration-300 overflow-hidden border"
+                  >
+                    {blog.image && (
+                      <img
+                        src={`${IMAGE_BASE_URL}${blog.image}`}
+                        alt={blog.title}
+                        className="w-full h-48 object-cover"
+                      />
+                    )}
 
-                  <div className="flex justify-between text-sm text-gray-600">
-                    <span>Diterbitkan: {blog.date_published}</span>
-                    <span className="capitalize">{blog.status}</span>
+                    <div className="p-4 flex flex-col h-full">
+                      <h4 className="text-lg font-semibold text-gray-800 mb-2 truncate">
+                        {blog.title}
+                      </h4>
+
+                      {/* Preview singkat konten: STRIP HTML dan potong jadi pendek */}
+                      <p className="text-sm text-gray-600 line-clamp-3 mb-4">
+                        {stripHtml(blog.content).slice(0, 120)}...
+                      </p>
+
+                      <div className="mt-auto flex justify-between items-center text-xs text-gray-500">
+                        <span>Diterbitkan: {blog.date_published}</span>
+                        <span className="capitalize px-2 py-0.5 rounded bg-gray-100">
+                          {blog.status}
+                        </span>
+                      </div>
+                    </div>
                   </div>
-                </li>
-              ))}
-            </ul>
-          </div>
+                ))}
+              </div>
+            )}
+          </>
         ) : (
           <div className="flex flex-col justify-center items-center h-64">
             <div className="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12 animate-spin"></div>
@@ -75,4 +84,10 @@ export default function Dashboard() {
       </div>
     </MainLayout>
   );
+}
+
+// Helper: Strip tag HTML dari konten blog
+function stripHtml(html) {
+  const doc = new DOMParser().parseFromString(html, "text/html");
+  return doc.body.textContent || "";
 }

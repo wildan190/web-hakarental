@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import HomeLayouts from "../../layouts/HomeLayouts";
 import api from "../../api";
+import { FaChevronDown } from "react-icons/fa";
 
 export default function WebFaq() {
   const [faqs, setFaqs] = useState([]);
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
+  const [openIndex, setOpenIndex] = useState(null);
 
   const fetchFaqs = async (keyword = "") => {
     try {
@@ -30,18 +32,32 @@ export default function WebFaq() {
     fetchFaqs(search);
   };
 
+  const toggleAccordion = (index) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
   return (
     <HomeLayouts>
-      <section className="max-w-4xl mx-auto px-4 py-10">
-        <h1 className="text-2xl md:text-3xl font-bold text-center mb-6 text-blue-700">Pertanyaan yang Sering Diajukan</h1>
+      {/* Hero Section */}
+      <section className="bg-blue-700 text-white text-center py-16 px-4">
+        <h1 className="text-4xl font-bold mb-3">FAQ</h1>
+        <p className="text-lg max-w-xl mx-auto">
+          Temukan jawaban dari pertanyaan umum yang sering ditanyakan pelanggan Hakarentcar.
+        </p>
+      </section>
 
-        <form onSubmit={handleSearch} className="flex flex-col sm:flex-row gap-2 mb-6">
+      {/* Search Bar */}
+      <section className="max-w-4xl mx-auto px-4 py-10">
+        <form
+          onSubmit={handleSearch}
+          className="flex flex-col sm:flex-row gap-2 mb-10"
+        >
           <input
             type="text"
             placeholder="Cari pertanyaan..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="flex-1 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300"
+            className="flex-1 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 shadow-sm"
           />
           <button
             type="submit"
@@ -51,19 +67,32 @@ export default function WebFaq() {
           </button>
         </form>
 
+        {/* FAQ Content */}
         {loading ? (
           <p className="text-center text-gray-500">Memuat FAQ...</p>
         ) : faqs.length === 0 ? (
-          <p className="text-center text-gray-500">Tidak ada data ditemukan.</p>
+          <p className="text-center text-gray-500">Tidak ada pertanyaan ditemukan.</p>
         ) : (
           <div className="space-y-4">
-            {faqs.map((faq) => (
+            {faqs.map((faq, index) => (
               <div
                 key={faq.id}
-                className="bg-white p-4 rounded shadow-md border hover:shadow-lg transition"
+                className="bg-white rounded-lg shadow transition duration-300 border"
               >
-                <h3 className="text-lg font-semibold text-blue-600">{faq.title}</h3>
-                <p className="text-gray-700 mt-1">{faq.description}</p>
+                <button
+                  onClick={() => toggleAccordion(index)}
+                  className="w-full flex justify-between items-center text-left px-4 py-3 focus:outline-none hover:bg-gray-100"
+                >
+                  <h3 className="font-semibold text-blue-700">{faq.title}</h3>
+                  <FaChevronDown
+                    className={`transform transition-transform ${
+                      openIndex === index ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+                {openIndex === index && (
+                  <div className="px-4 pb-4 text-gray-700">{faq.description}</div>
+                )}
               </div>
             ))}
           </div>

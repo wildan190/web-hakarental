@@ -46,7 +46,8 @@ export default function Home() {
 
   // Function to change the slide
   const changeSlide = (direction) => {
-    const totalSlides = Math.ceil(data.gallery.length / 4);
+    const imagesPerSlide = window.innerWidth < 640 ? 2 : 4; // Show 2 images per slide on mobile
+    const totalSlides = Math.ceil(data.gallery.length / imagesPerSlide);
     let newSlide = currentSlide + direction;
 
     if (newSlide < 0) {
@@ -58,10 +59,11 @@ export default function Home() {
     setCurrentSlide(newSlide);
   };
 
-  // Slice the gallery into groups of 4 images
+  // Slice the gallery into groups of images based on screen size
   const getCurrentSlideImages = () => {
-    const start = currentSlide * 4;
-    const end = start + 4;
+    const imagesPerSlide = window.innerWidth < 640 ? 2 : 4; // Show 2 images per slide on mobile
+    const start = currentSlide * imagesPerSlide;
+    const end = start + imagesPerSlide;
     return data.gallery.slice(start, end);
   };
 
@@ -275,7 +277,7 @@ export default function Home() {
                   </div>
                   <div className="mt-4 w-full md:w-auto">
                     <a
-                      href="https://wa.me/62822535456"
+                      href={`https://wa.me/62822535456?text=Halo%20saya%20rencana%20untuk%20menyewa%20mobil%20${encodeURIComponent(car.name)}.%20Apakah%20mobil%20ini%20tersedia%3F`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-block bg-green-500 text-white font-medium px-4 py-2 rounded hover:bg-green-600 transition text-base w-full md:w-auto"
