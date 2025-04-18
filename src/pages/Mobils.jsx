@@ -238,7 +238,7 @@ export default function Mobils() {
                             src={
                               mobil.image.startsWith("http")
                                 ? mobil.image
-                                : `https://fast-llama-evenly.ngrok-free.app/storage/${mobil.image}`
+                                : `https://ae9iufbiym.sharedwithexpose.com//storage/${mobil.image}`
                             }
                             alt={mobil.name}
                             className="w-20 h-auto rounded"
