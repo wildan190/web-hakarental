@@ -90,10 +90,10 @@ export default function Metadata() {
             { label: "Phone", name: "phone", type: "text" },
             { label: "Email", name: "email", type: "email" },
             { label: "Address", name: "address", type: "text" },
-            { label: "Facebook", name: "facebook", type: "url" },
-            { label: "Instagram", name: "instagram", type: "url" },
-            { label: "Twitter", name: "twitter", type: "url" },
-            { label: "LinkedIn", name: "linkedin", type: "url" },
+            { label: "Facebook", name: "facebook", type: "text" },
+            { label: "Instagram", name: "instagram", type: "text" },
+            { label: "Twitter", name: "twitter", type: "text" },
+            { label: "LinkedIn", name: "linkedin", type: "text" },
             { label: "Website Name", name: "website_name", type: "text" },
           ].map(({ label, name, type }) => (
             <div key={name}>

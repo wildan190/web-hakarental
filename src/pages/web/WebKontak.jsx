@@ -80,7 +80,7 @@ export default function WebKontak() {
               <FaInstagram className="text-2xl text-pink-500" />
               <div>
                 <h3 className="font-semibold">Instagram</h3>
-                <a href={kontak.instagram} target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">
+                <a href={`https://instagram.com/${kontak.instagram}`} target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">
                   {kontak.instagram}
                 </a>
               </div>
@@ -90,7 +90,7 @@ export default function WebKontak() {
               <FaFacebook className="text-2xl text-blue-700" />
               <div>
                 <h3 className="font-semibold">Facebook</h3>
-                <a href={kontak.facebook} target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">
+                <a href={`https://facebook.com/${kontak.instagram}`} target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">
                   {kontak.facebook}
                 </a>
               </div>
