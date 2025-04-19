@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import api from "../../api";
 import HomeLayouts from "../../layouts/HomeLayouts";
+import Cookies from "js-cookie";
 
 export default function WebBlogDetail() {
   const { slug } = useParams();
@@ -9,28 +10,45 @@ export default function WebBlogDetail() {
   const [relatedBlogs, setRelatedBlogs] = useState([]);
 
   useEffect(() => {
-    const fetchBlog = async () => {
-      try {
-        const res = await api.get(`/web/blog/${slug}`);
-        setBlog(res.data);
-      } catch (error) {
-        console.error("Gagal memuat detail artikel:", error);
-      }
-    };
+    const cacheKey = `blog-detail-${slug}`;
+    const cacheData = sessionStorage.getItem(cacheKey);
 
-    const fetchRelatedBlogs = async () => {
-      try {
-        const res = await api.get("/web/blog");
-        const filtered = res.data.filter((item) => item.slug !== slug).slice(0, 3);
-        setRelatedBlogs(filtered);
-      } catch (error) {
-        console.error("Gagal memuat artikel terkait:", error);
-      }
-    };
+    if (cacheData) {
+      const parsed = JSON.parse(cacheData);
+      setBlog(parsed.blog);
+      setRelatedBlogs(parsed.related);
+    } else {
+      fetchBlog();
+    }
 
-    fetchBlog();
-    fetchRelatedBlogs();
+    // Simpan slug yang sudah dikunjungi ke cookie (misalnya untuk rekomendasi di masa depan)
+    const visited = Cookies.get("visitedBlogs");
+    let visitedArray = visited ? JSON.parse(visited) : [];
+
+    if (!visitedArray.includes(slug)) {
+      visitedArray.push(slug);
+      Cookies.set("visitedBlogs", JSON.stringify(visitedArray), { expires: 7 });
+    }
   }, [slug]);
+
+  const fetchBlog = async () => {
+    try {
+      const res = await api.get(`/web/blog/${slug}`);
+      setBlog(res.data.blog);
+      setRelatedBlogs(res.data.related);
+
+      // Simpan ke sessionStorage
+      sessionStorage.setItem(
+        `blog-detail-${slug}`,
+        JSON.stringify({
+          blog: res.data.blog,
+          related: res.data.related,
+        })
+      );
+    } catch (error) {
+      console.error("Gagal memuat detail artikel:", error);
+    }
+  };
 
   const imgUrl = (path) =>
     path ? `${import.meta.env.VITE_BASE_URL}/${path}` : null;
@@ -76,34 +94,36 @@ export default function WebBlogDetail() {
         </article>
 
         {/* Related Topics */}
-        <aside>
-          <h3 className="text-xl font-semibold text-gray-800 mb-4">Topik Terkait</h3>
-          <div className="space-y-4">
-            {relatedBlogs.map((item) => (
-              <Link
-                to={`/blog/${item.slug}`}
-                key={item.id}
-                className="block bg-white hover:bg-gray-50 border rounded-lg overflow-hidden shadow transition"
-              >
-                {item.image && (
-                  <img
-                    src={imgUrl(item.image)}
-                    alt={item.title}
-                    className="w-full h-32 object-cover"
-                  />
-                )}
-                <div className="p-4">
-                  <h4 className="text-md font-semibold text-gray-800 mb-1 line-clamp-2">
-                    {item.title}
-                  </h4>
-                  <p className="text-sm text-gray-500">
-                    {new Date(item.date_published).toLocaleDateString()}
-                  </p>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </aside>
+        {relatedBlogs.length > 0 && (
+          <aside>
+            <h3 className="text-xl font-semibold text-gray-800 mb-4">Topik Terkait</h3>
+            <div className="space-y-4">
+              {relatedBlogs.map((item) => (
+                <Link
+                  to={`/blog/${item.slug}`}
+                  key={item.id}
+                  className="block bg-white hover:bg-gray-50 border rounded-lg overflow-hidden shadow transition"
+                >
+                  {item.image && (
+                    <img
+                      src={imgUrl(item.image)}
+                      alt={item.title}
+                      className="w-full h-32 object-cover"
+                    />
+                  )}
+                  <div className="p-4">
+                    <h4 className="text-md font-semibold text-gray-800 mb-1 line-clamp-2">
+                      {item.title}
+                    </h4>
+                    <p className="text-sm text-gray-500">
+                      {new Date(item.date_published).toLocaleDateString()}
+                    </p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </aside>
+        )}
       </section>
     </HomeLayouts>
   );
