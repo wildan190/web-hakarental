@@ -8,7 +8,7 @@ export default function Dashboard() {
   const [data, setData] = useState(null);
   const navigate = useNavigate();
 
-  const IMAGE_BASE_URL = "https://ae9iufbiym.sharedwithexpose.com/storage/";
+  const IMAGE_BASE_URL = "https://cells-notifications-avatar-sublime.trycloudflare.com/storage/";
 
   const fetchDashboard = async () => {
     try {

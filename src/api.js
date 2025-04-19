@@ -2,7 +2,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://ae9iufbiym.sharedwithexpose.com//api",
+  baseURL: "https://cells-notifications-avatar-sublime.trycloudflare.com/api",
 });
 
 export default api;

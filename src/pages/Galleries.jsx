@@ -164,7 +164,7 @@ export default function Galleries() {
                       <td className="px-4 py-2">
                         {gallery.image && (
                           <img
-                            src={`https://ae9iufbiym.sharedwithexpose.com//storage/${gallery.image}`}
+                            src={`https://cells-notifications-avatar-sublime.trycloudflare.com/storage/${gallery.image}`}
                             alt={gallery.title}
                             className="w-20 h-auto rounded"
                           />
