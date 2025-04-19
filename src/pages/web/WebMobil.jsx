@@ -156,7 +156,7 @@ export default function WebMobil() {
                       href={`https://wa.me/62822535456?text=Halo%20saya%20rencana%20untuk%20menyewa%20mobil%20${encodeURIComponent(car.name)}.%20Apakah%20mobil%20ini%20tersedia%3F`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-block bg-green-500 text-white font-medium px-4 py-2 rounded hover:bg-green-600 transition text-base w-full md:w-auto"
+                      className="inline-block bg-blue-500 text-white font-medium px-4 py-2 rounded hover:bg-blue-600 transition text-base w-full md:w-auto"
                     >
                       Sewa Sekarang
                     </a>

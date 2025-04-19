@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams, useNavigate } from "react-router-dom";
 import api from "../../api";
 import HomeLayouts from "../../layouts/HomeLayouts";
 import Slider from "react-slick";
@@ -7,21 +7,25 @@ import { motion } from "framer-motion";
 
 export default function WebBlog() {
   const [blogs, setBlogs] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const blogsPerPage = 6;
+  const [totalPages, setTotalPages] = useState(1);
+
+  const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
+  const currentPage = parseInt(searchParams.get("page") || "1");
 
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const res = await api.get("/web/blog");
-        setBlogs(res.data);
+        const res = await api.get(`/web/blog?page=${currentPage}`);
+        setBlogs(res.data.data);
+        setTotalPages(res.data.last_page);
       } catch (error) {
         console.error("Gagal mengambil data blog:", error);
       }
     };
 
     fetchBlogs();
-  }, []);
+  }, [currentPage]);
 
   const imgUrl = (path) =>
     path ? `${import.meta.env.VITE_BASE_URL}/${path}` : null;
@@ -36,12 +40,10 @@ export default function WebBlog() {
     arrows: false,
   };
 
-  const totalPages = Math.ceil(blogs.length / blogsPerPage);
-  const indexOfLastBlog = currentPage * blogsPerPage;
-  const indexOfFirstBlog = indexOfLastBlog - blogsPerPage;
-  const currentBlogs = blogs.slice(indexOfFirstBlog, indexOfLastBlog);
-
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const paginate = (pageNumber) => {
+    navigate(`/blog?page=${pageNumber}`);
+    window.location.reload(); // <--- INI agar reload secara penuh
+  };
 
   return (
     <HomeLayouts>
@@ -86,7 +88,7 @@ export default function WebBlog() {
           <h2 className="text-3xl font-bold text-gray-800 mb-10 text-center">Artikel Terbaru</h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {currentBlogs.map((blog, index) => (
+            {blogs.map((blog, index) => (
               <motion.div
                 key={blog.id}
                 className="bg-white rounded-xl shadow hover:shadow-md transition duration-300"
