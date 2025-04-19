@@ -291,6 +291,14 @@ export default function Home() {
               </div>
             ))}
           </div>
+          <div className="mt-8">
+            <button
+              onClick={() => window.location.href = "/mobil"}
+              className="bg-blue-500 text-white font-medium px-6 py-3 rounded hover:bg-blue-600 transition text-lg"
+            >
+              Lihat Semua
+            </button>
+          </div>
         </div>
       </AnimatedSection>
 
