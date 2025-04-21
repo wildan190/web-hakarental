@@ -2,7 +2,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://cells-notifications-avatar-sublime.trycloudflare.com/api",
+  baseURL: "https://kentucky-dimension-puzzle-beverages.trycloudflare.com/api",
 });
 
 export default api;

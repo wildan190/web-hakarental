@@ -238,7 +238,7 @@ export default function Mobils() {
                             src={
                               mobil.image.startsWith("http")
                                 ? mobil.image
-                                : `https://cells-notifications-avatar-sublime.trycloudflare.com/storage/${mobil.image}`
+                                : `https://kentucky-dimension-puzzle-beverages.trycloudflare.com/storage/${mobil.image}`
                             }
                             alt={mobil.name}
                             className="w-20 h-auto rounded"

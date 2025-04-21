@@ -18,7 +18,7 @@ export default function MainLayout({ children }) {
 
   const handleLogout = async () => {
     try {
-      await fetch("https://cells-notifications-avatar-sublime.trycloudflare.com/api/auth/logout", {
+      await fetch("https://kentucky-dimension-puzzle-beverages.trycloudflare.com/api/auth/logout", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("access_token")}`,
