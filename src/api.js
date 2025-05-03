@@ -2,7 +2,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://granted-aids-florist-hd.trycloudflare.com/api",
+  baseURL: "https://connecting-clinics-closely-jewelry.trycloudflare.com/api",
 });
 
 export default api;

@@ -18,7 +18,7 @@ export default function MainLayout({ children }) {
 
   const handleLogout = async () => {
     try {
-      await fetch("https://granted-aids-florist-hd.trycloudflare.com/api/auth/logout", {
+      await fetch("https://connecting-clinics-closely-jewelry.trycloudflare.com/api/auth/logout", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("access_token")}`,

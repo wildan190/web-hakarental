@@ -91,6 +91,17 @@ export default function Home() {
 
   return (
     <HomeLayouts>
+
+      <AnimatedSection className="bg-red-100 py-8 px-4">
+        <div className="text-center">
+          <h2 className="text-2xl font-bold text-red-600 mb-4">Pemberitahuan Penting</h2>
+          <p className="text-lg text-gray-700">
+            Website ini sedang dalam proses maintenance. Beberapa fitur mungkin tidak berfungsi dengan baik. 
+            Kami mohon maaf atas ketidaknyamanannya dan akan segera memperbaiki layanan kami.
+          </p>
+        </div>
+      </AnimatedSection>
+
       <AnimatedSection className="bg-gradient-to-b from-blue-50 to-white py-16 px-4">
         <h2 className="text-2xl font-bold mb-6 text-center">Kenapa Memilih Kami?</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
@@ -396,6 +407,7 @@ export default function Home() {
           ))}
         </div>
       </AnimatedSection>
+      
     </HomeLayouts>
   );
 }

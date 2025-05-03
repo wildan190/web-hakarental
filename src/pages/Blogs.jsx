@@ -16,7 +16,7 @@ export default function Blogs() {
   const quillRef = useRef(null);
   const editorInstance = useRef(null);
 
-  const IMAGE_BASE_URL = "https://granted-aids-florist-hd.trycloudflare.com/storage/";
+  const IMAGE_BASE_URL = "https://connecting-clinics-closely-jewelry.trycloudflare.com/storage/";
 
   const fetchBlogs = async () => {
     try {

@@ -238,7 +238,7 @@ export default function Mobils() {
                             src={
                               mobil.image.startsWith("http")
                                 ? mobil.image
-                                : `https://granted-aids-florist-hd.trycloudflare.com/storage/${mobil.image}`
+                                : `https://connecting-clinics-closely-jewelry.trycloudflare.com/storage/${mobil.image}`
                             }
                             alt={mobil.name}
                             className="w-20 h-auto rounded"
