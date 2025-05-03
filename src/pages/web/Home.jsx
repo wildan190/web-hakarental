@@ -92,7 +92,7 @@ export default function Home() {
   return (
     <HomeLayouts>
 
-      <AnimatedSection className="bg-red-100 py-8 px-4">
+      {/* <AnimatedSection className="bg-red-100 py-8 px-4">
         <div className="text-center">
           <h2 className="text-2xl font-bold text-red-600 mb-4">Pemberitahuan Penting</h2>
           <p className="text-lg text-gray-700">
@@ -100,7 +100,7 @@ export default function Home() {
             Kami mohon maaf atas ketidaknyamanannya dan akan segera memperbaiki layanan kami.
           </p>
         </div>
-      </AnimatedSection>
+      </AnimatedSection> */}
 
       <AnimatedSection className="bg-gradient-to-b from-blue-50 to-white py-16 px-4">
         <h2 className="text-2xl font-bold mb-6 text-center">Kenapa Memilih Kami?</h2>
@@ -407,7 +407,7 @@ export default function Home() {
           ))}
         </div>
       </AnimatedSection>
-      
+
     </HomeLayouts>
   );
 }
