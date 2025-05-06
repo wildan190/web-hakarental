@@ -132,7 +132,7 @@ export default function HomeLayouts({ children }) {
         </div>
 
         <div className="text-center text-sm text-gray-300 mt-8">
-          &copy; {new Date().getFullYear()} Rental Mobil. All rights reserved.
+          &copy; {new Date().getFullYear()} Hakarentcar. All rights reserved.
         </div>
       </footer>
 
