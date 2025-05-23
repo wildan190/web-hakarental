@@ -16,7 +16,7 @@ export default function Blogs() {
   const quillRef = useRef(null);
   const editorInstance = useRef(null);
 
-  const IMAGE_BASE_URL = "https://mobility-hiking-installation-go.trycloudflare.com/storage/";
+  const IMAGE_BASE_URL = "https://formation-keyboard-employer-drug.trycloudflare.com/storage/";
 
   const fetchBlogs = async () => {
     try {

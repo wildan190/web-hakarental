@@ -238,7 +238,7 @@ export default function Mobils() {
                             src={
                               mobil.image.startsWith("http")
                                 ? mobil.image
-                                : `https://mobility-hiking-installation-go.trycloudflare.com/storage/${mobil.image}`
+                                : `https://formation-keyboard-employer-drug.trycloudflare.com/storage/${mobil.image}`
                             }
                             alt={mobil.name}
                             className="w-20 h-auto rounded"

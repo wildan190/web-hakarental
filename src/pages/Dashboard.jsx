@@ -8,7 +8,7 @@ export default function Dashboard() {
   const [data, setData] = useState(null);
   const navigate = useNavigate();
 
-  const IMAGE_BASE_URL = "https://mobility-hiking-installation-go.trycloudflare.com/storage/";
+  const IMAGE_BASE_URL = "https://formation-keyboard-employer-drug.trycloudflare.com/storage/";
 
   const fetchDashboard = async () => {
     try {
