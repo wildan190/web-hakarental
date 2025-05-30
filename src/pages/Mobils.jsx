@@ -238,7 +238,7 @@ export default function Mobils() {
                             src={
                               mobil.image.startsWith("http")
                                 ? mobil.image
-                                : `https://constitutes-different-wondering-picking.trycloudflare.com/storage/${mobil.image}`
+                                : `https://carlo-nevada-introduced-jun.trycloudflare.com/storage/${mobil.image}`
                             }
                             alt={mobil.name}
                             className="w-20 h-auto rounded"

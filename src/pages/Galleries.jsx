@@ -164,7 +164,7 @@ export default function Galleries() {
                       <td className="px-4 py-2">
                         {gallery.image && (
                           <img
-                            src={`https://constitutes-different-wondering-picking.trycloudflare.com/storage/${gallery.image}`}
+                            src={`https://carlo-nevada-introduced-jun.trycloudflare.com/storage/${gallery.image}`}
                             alt={gallery.title}
                             className="w-20 h-auto rounded"
                           />
