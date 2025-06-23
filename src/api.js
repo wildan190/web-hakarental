@@ -2,7 +2,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://ranch-consciousness-cm-teacher.trycloudflare.com/api",
+  baseURL: "https://efficiently-providence-inherited-operations.trycloudflare.com/api",
 });
 
 export default api;
