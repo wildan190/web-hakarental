@@ -238,7 +238,7 @@ export default function Mobils() {
                             src={
                               mobil.image.startsWith("http")
                                 ? mobil.image
-                                : `https://efficiently-providence-inherited-operations.trycloudflare.com/storage/${mobil.image}`
+                                : `https://portions-kg-relations-coaching.trycloudflare.com/storage/${mobil.image}`
                             }
                             alt={mobil.name}
                             className="w-20 h-auto rounded"
