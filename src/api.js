@@ -2,7 +2,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://portions-kg-relations-coaching.trycloudflare.com/api",
+  baseURL: "https://ghost-theta-ng-jamaica.trycloudflare.com /api",
 });
 
 export default api;
