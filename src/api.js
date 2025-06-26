@@ -2,7 +2,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://ghost-theta-ng-jamaica.trycloudflare.com /api",
+  baseURL: "https://old-powerpoint-mambo-intake.trycloudflare.co/api",
 });
 
 export default api;

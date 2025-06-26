@@ -18,7 +18,7 @@ export default function MainLayout({ children }) {
 
   const handleLogout = async () => {
     try {
-      await fetch("hhttps://ghost-theta-ng-jamaica.trycloudflare.com /api/auth/logout", {
+      await fetch("https://old-powerpoint-mambo-intake.trycloudflare.co/api/auth/logout", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("access_token")}`,

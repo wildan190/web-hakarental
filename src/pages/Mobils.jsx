@@ -238,7 +238,7 @@ export default function Mobils() {
                             src={
                               mobil.image.startsWith("http")
                                 ? mobil.image
-                                : `https://ghost-theta-ng-jamaica.trycloudflare.com /storage/${mobil.image}`
+                                : `https://old-powerpoint-mambo-intake.trycloudflare.co/storage/${mobil.image}`
                             }
                             alt={mobil.name}
                             className="w-20 h-auto rounded"
