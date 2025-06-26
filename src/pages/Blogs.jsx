@@ -16,7 +16,7 @@ export default function Blogs() {
   const quillRef = useRef(null);
   const editorInstance = useRef(null);
 
-  const IMAGE_BASE_URL = "https://old-powerpoint-mambo-intake.trycloudflare.co/storage/";
+  const IMAGE_BASE_URL = "https://old-powerpoint-mambo-intake.trycloudflare.com/storage/";
 
   const fetchBlogs = async () => {
     try {
