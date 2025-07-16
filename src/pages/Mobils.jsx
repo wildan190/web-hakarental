@@ -238,7 +238,7 @@ export default function Mobils() {
                             src={
                               mobil.image.startsWith("http")
                                 ? mobil.image
-                                : `https://old-powerpoint-mambo-intake.trycloudflare.com/storage/${mobil.image}`
+                                : `https://advisors-government-auction-tub.trycloudflare.com/storage/${mobil.image}`
                             }
                             alt={mobil.name}
                             className="w-20 h-auto rounded"

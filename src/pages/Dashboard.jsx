@@ -8,7 +8,7 @@ export default function Dashboard() {
   const [data, setData] = useState(null);
   const navigate = useNavigate();
 
-  const IMAGE_BASE_URL = "https://old-powerpoint-mambo-intake.trycloudflare.com/storage/";
+  const IMAGE_BASE_URL = "https://advisors-government-auction-tub.trycloudflare.com/storage/";
 
   const fetchDashboard = async () => {
     try {
