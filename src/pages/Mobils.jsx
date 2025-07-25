@@ -238,7 +238,7 @@ export default function Mobils() {
                             src={
                               mobil.image.startsWith("http")
                                 ? mobil.image
-                                : `https://passion-trip-desperate-convention.trycloudflare.com/storage/${mobil.image}`
+                                : `https://referring-constitutional-maple-desktops.trycloudflare.com/storage/${mobil.image}`
                             }
                             alt={mobil.name}
                             className="w-20 h-auto rounded"
