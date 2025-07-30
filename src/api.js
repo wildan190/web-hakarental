@@ -2,7 +2,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://referring-constitutional-maple-desktops.trycloudflare.com/api",
+  baseURL: "https://teeth-heroes-responsibilities-lamb.trycloudflare.com/api",
 });
 
 export default api;

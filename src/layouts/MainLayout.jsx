@@ -18,7 +18,7 @@ export default function MainLayout({ children }) {
 
   const handleLogout = async () => {
     try {
-      await fetch("https://referring-constitutional-maple-desktops.trycloudflare.com/api/auth/logout", {
+      await fetch("https://teeth-heroes-responsibilities-lamb.trycloudflare.com/api/auth/logout", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("access_token")}`,

@@ -16,7 +16,7 @@ export default function Blogs() {
   const quillRef = useRef(null);
   const editorInstance = useRef(null);
 
-  const IMAGE_BASE_URL = "https://referring-constitutional-maple-desktops.trycloudflare.com/storage/";
+  const IMAGE_BASE_URL = "https://teeth-heroes-responsibilities-lamb.trycloudflare.com/storage/";
 
   const fetchBlogs = async () => {
     try {
