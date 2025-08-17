@@ -238,7 +238,7 @@ export default function Mobils() {
                             src={
                               mobil.image.startsWith("http")
                                 ? mobil.image
-                                : `https://teeth-heroes-responsibilities-lamb.trycloudflare.com/storage/${mobil.image}`
+                                : ` https://frederick-oh-peterson-inquiry.trycloudflare.com/storage/${mobil.image}`
                             }
                             alt={mobil.name}
                             className="w-20 h-auto rounded"
