@@ -16,7 +16,7 @@ export default function Blogs() {
   const quillRef = useRef(null);
   const editorInstance = useRef(null);
 
-  const IMAGE_BASE_URL = " https://frederick-oh-peterson-inquiry.trycloudflare.com/storage/";
+  const IMAGE_BASE_URL = " https://searching-say-officer-bufing.trycloudflare.com/storage/";
 
   const fetchBlogs = async () => {
     try {
