@@ -8,7 +8,7 @@ export default function Dashboard() {
   const [data, setData] = useState(null);
   const navigate = useNavigate();
 
-  const IMAGE_BASE_URL = " https://searching-say-officer-bufing.trycloudflare.com/storage/";
+  const IMAGE_BASE_URL = import.meta.env.VITE_IMAGE_BASE_URL;
 
   const fetchDashboard = async () => {
     try {
@@ -47,7 +47,7 @@ export default function Dashboard() {
                   >
                     {blog.image && (
                       <img
-                        src={`${IMAGE_BASE_URL}${blog.image}`}
+                        src={`${import.meta.env.VITE_IMAGE_BASE_URL || ''}${blog.image}`}
                         alt={blog.title}
                         className="w-full h-48 object-cover"
                       />

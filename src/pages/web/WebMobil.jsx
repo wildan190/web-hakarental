@@ -34,7 +34,7 @@ export default function WebMobil() {
     fetchMobils();
   }, [filters]);
 
-  const imgUrl = (path) => `${import.meta.env.VITE_BASE_URL}/${path}`;
+  const imgUrl = (path) => `${import.meta.env.VITE_IMAGE_BASE_URL}/${path}`;
 
   const handleInputChange = (e) => {
     setFilters({ ...filters, [e.target.name]: e.target.value });

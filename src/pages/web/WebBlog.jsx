@@ -32,7 +32,7 @@ export default function WebBlog() {
   }, [currentPage]);
 
   const imgUrl = (path) =>
-    path ? `${import.meta.env.VITE_BASE_URL}/${path}` : null;
+    path ? `${import.meta.env.VITE_IMAGE_BASE_URL}/${path}` : null;
 
   const sliderSettings = {
     dots: true,

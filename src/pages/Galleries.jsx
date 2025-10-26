@@ -11,6 +11,8 @@ export default function Galleries() {
   const [imageFile, setImageFile] = useState(null);
   const [editingId, setEditingId] = useState(null);
 
+  const IMAGE_BASE_URL = import.meta.env.VITE_IMAGE_BASE_URL;
+
   const fetchGalleries = async () => {
     try {
       const res = await api.get("/admin/galleries", {
@@ -164,7 +166,7 @@ export default function Galleries() {
                       <td className="px-4 py-2">
                         {gallery.image && (
                           <img
-                            src={` https://searching-say-officer-bufing.trycloudflare.com/storage/${gallery.image}`}
+                            src={`${import.meta.env.VITE_IMAGE_BASE_URL || ''}${gallery.image}`}
                             alt={gallery.title}
                             className="w-20 h-auto rounded"
                           />

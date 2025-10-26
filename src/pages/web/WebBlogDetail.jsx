@@ -58,7 +58,7 @@ export default function WebBlogDetail() {
   };
 
   const imgUrl = (path) =>
-    path ? `${import.meta.env.VITE_BASE_URL}/${path}` : null;
+    path ? `${import.meta.env.VITE_IMAGE_BASE_URL}/${path}` : null;
 
   const currentUrl = typeof window !== "undefined" ? window.location.href : "";
 

@@ -16,7 +16,7 @@ export default function Blogs() {
   const quillRef = useRef(null);
   const editorInstance = useRef(null);
 
-  const IMAGE_BASE_URL = " https://searching-say-officer-bufing.trycloudflare.com/storage/";
+  const IMAGE_BASE_URL = import.meta.env.VITE_IMAGE_BASE_URL;
 
   const fetchBlogs = async () => {
     try {
@@ -121,7 +121,7 @@ export default function Blogs() {
       status: blog.status,
     });
     setEditingId(blog.id);
-    setImagePreview(blog.image ? IMAGE_BASE_URL + blog.image : null);
+    setImagePreview(blog.image ? `${import.meta.env.VITE_IMAGE_BASE_URL || ''}${blog.image}` : null);
     setTimeout(() => {
       if (editorInstance.current) {
         editorInstance.current.root.innerHTML = blog.content;

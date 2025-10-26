@@ -19,6 +19,8 @@ export default function Mobils() {
   const [imagePreview, setImagePreview] = useState(null);
   const [editingId, setEditingId] = useState(null);
 
+  const IMAGE_BASE_URL = import.meta.env.VITE_IMAGE_BASE_URL;
+
   const fetchMobils = async () => {
     try {
       const res = await api.get("/admin/mobils", {
@@ -238,7 +240,7 @@ export default function Mobils() {
                             src={
                               mobil.image.startsWith("http")
                                 ? mobil.image
-                                : ` https://searching-say-officer-bufing.trycloudflare.com/storage/${mobil.image}`
+                                : `${import.meta.env.VITE_IMAGE_BASE_URL || ''}${mobil.image}`
                             }
                             alt={mobil.name}
                             className="w-20 h-auto rounded"

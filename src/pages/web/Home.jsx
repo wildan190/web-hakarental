@@ -34,7 +34,7 @@ export default function Home() {
       return path;
     }
 
-    return `${import.meta.env.VITE_BASE_URL}/${path}`;
+    return `${import.meta.env.VITE_IMAGE_BASE_URL}/${path}`;
   };
 
   const formatRupiah = (number) => {
